@@ -18,24 +18,25 @@ $data = $_REQUEST;
     <table>
         <caption>Submitted Data</caption>
         <tr>
-            <th>Field</th>
-            <th>Value</th>
+            <th>Choice</th>
+            <th>Response</th>
         </tr>
-        <?php
-        foreach ($data as $key => $value) {
-            echo "<tr><td>" . htmlspecialchars($key) . "<tr><td>";
-            if (is_array($value)) {
-                echo "<ul>";
-                foreach ($value as $v) {
-                    echo "<li>" . htmlspecialchars($v) . "</li>";
-                }
-                echo "<ul>";
-            } else {
-                echo htmlspecialchars($value);
-            }
-            echo "<td><tr>";
-        }
-        ?>
+        <?php foreach ($data as $key => $value): ?>
+            <tr>
+                <td><?= htmlspecialchars($choice)?></td>
+                <td>
+                    <?php if (is_array($response)): ?>
+                        <ul
+                            <?php foreach ($response as $item): ?>
+                                <li><?= htmlspecialchars($item) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <?= htmlspecialchars($response) ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </table>
 
     
