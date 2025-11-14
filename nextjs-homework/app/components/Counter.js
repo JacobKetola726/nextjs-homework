@@ -10,7 +10,7 @@ export default function Counter({ increment, color}){
     };
 
     return (
-        <div style={{maargin: '1em'}}>
+        <div style={{ margin: '1em'}}>
             <h3>Counter (increments by {increment}) </h3>
             <p>Count: {count}</p>
             <button

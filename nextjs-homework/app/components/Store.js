@@ -6,9 +6,12 @@ export default function Store(){
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then(res => res.join())
-            .then(json => setProducts(json));
+        const fetchProducts = async () => {
+            const res = await fetch('https://fakestoreapi.com/products');
+            const data = await res.json();
+            setProducts(data);
+    }
+        fetchProducts();
     }, []);
 
     const filtered = products.filter(p => 
@@ -27,7 +30,7 @@ export default function Store(){
                     padding: '0.5em',
                     marginBottom: '1em',
                     width: '100%',
-                    maxwidth: '400px',
+                    maxWidth: '400px',
                     border: '1px solid #ccc',
                     borderRadius: '5px'
                 }}
